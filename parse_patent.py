@@ -20,5 +20,8 @@ def parse_patent(patent_file):
 		day = patent['date'][6:8]
 		patent['date'] = "{}-{}-{}".format(year, month, day)
 
+	if 'ipc' in patent:
+		patent['ipc'] = patent['ipc'].split(',')
+
 
 	return patent
