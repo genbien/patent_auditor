@@ -1,6 +1,6 @@
 
 def parse_patent(patent_file):
-	patents = {}
+	patent = {}
 
 	with open(patent_file, 'r') as file:
 		patent_data = file.readlines()
@@ -9,6 +9,8 @@ def parse_patent(patent_file):
 		line = line.rstrip()
 		data = line.split(' ::: ')
 		if len(data) == 2:
-			patents[data[0]] = data[1]
-
-	return patents
+			if data[0] not in patent:
+				patent[data[0]] = data[1]
+			else:
+				patent[data[0]] += ','+data[1]
+	return patent
