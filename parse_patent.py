@@ -12,7 +12,3 @@ def parse_patent(patent_file):
 			patents[data[0]] = data[1]
 
 	return patents
-
-
-stuff = parse_patent('fixtures/patent_definition.txt')
-print(stuff)

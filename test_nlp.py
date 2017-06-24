@@ -1,4 +1,3 @@
-import pytest
 from nlp import lemmatize_word, tag_word_pos
 
 def test_lemmatize_verb():
