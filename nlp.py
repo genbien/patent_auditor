@@ -4,6 +4,8 @@ from treetagger import TreeTagger
 tt = TreeTagger(language='french')
 
 def clean_tag(tag):
+	if len(tag) != 3:
+		return None
 	word, pos, lemma = tag
 	if lemma == '<unknown>':
 		return { 'word': word, 'lemma': word, 'pos': 'UNKNOWN' }
