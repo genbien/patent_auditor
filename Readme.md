@@ -1,6 +1,6 @@
-# Pattent Auditor
+# Patent Auditor
 
-Developped during the 2017 Hackatal.
+Developped during the 2017 HackaTAL.
 
 ## Installation
 
@@ -14,7 +14,15 @@ export TREETAGGER_HOME='/path/to/your/TreeTagger/cmd/'
 
 ### Python libs
 
+```bash
 pip install -r requirements.txt
+```
+
+## Test
+
+```bash
+pytest
+```
 
 
 
