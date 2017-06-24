@@ -1,0 +1,3 @@
+nltk==3.2.4
+six==1.10.0
+treetagger==1.0.1
