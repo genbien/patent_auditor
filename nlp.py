@@ -3,19 +3,25 @@ from treetagger import TreeTagger
 
 tt = TreeTagger(language='french')
 
-
-def lemmatize_word(word):
-	lemma = tt.tag(word)[0][2]
+def clean_tag(tag):
+	word, pos, lemma = tag
 	if lemma == '<unknown>':
-		lemma = word
-	return lemma
-
-def tag_word_pos(word):
-	pos = tt.tag(word)[0][1]
-	if tt.tag(word)[0][2] == '<unknown>':
-		pos = 'UNKNOWN'
+		return { 'word': word, 'lemma': word, 'pos': 'UNKNOWN' }
 	elif pos == 'NOM':
-		pos = 'NOUN'
+		return { 'word': word, 'lemma': lemma, 'pos': 'NOUN' }
 	elif pos.startswith('VER'):
-		pos = 'VERB'
-	return pos
+		return { 'word': word, 'lemma': lemma, 'pos': 'VERB' }
+	elif pos.startswith('ADJ'):
+		return { 'word': word, 'lemma': lemma, 'pos': 'ADJ' }
+	return None
+
+
+def tag_text(text):
+	raw_tags = tt.tag(text)
+
+	clean_tags = []
+	for tag in raw_tags:
+		tag = clean_tag(tag)
+		if tag is not None:
+			clean_tags.append(tag)
+	return clean_tags
