@@ -13,4 +13,12 @@ def parse_patent(patent_file):
 				patent[data[0]] = data[1]
 			else:
 				patent[data[0]] += ','+data[1]
+
+	if 'date' in patent:
+		year = patent['date'][0:4]
+		month = patent['date'][4:6]
+		day = patent['date'][6:8]
+		patent['date'] = "{}-{}-{}".format(year, month, day)
+
+
 	return patent
