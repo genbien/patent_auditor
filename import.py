@@ -10,6 +10,8 @@ for path, subdirs, files in os.walk(root):
 		if os.path.join(path, name).endswith('.txt'):
 			parsed = parse_patent(os.path.join(path, name))
 			print("INSERT INTO patent(code, date) VALUES ('{}', '{}');".format(parsed['code'], parsed['date']))
+			for ipc in parsed['ipc']:
+				print("INSERT INTO patent_ipcs(patent_code, ipc) VALUES('{}', '{}');".format(parsed['code'], ipc))
 			tagged = tag_text(parsed['abstract'])
 			for t in tagged:
 				print("INSERT INTO patent_claim_words(patent_code, word, lemma, pos) VALUES('{}', '{}', '{}', '{}');".format(parsed['code'], t['word'], t['lemma'], t['pos']))
