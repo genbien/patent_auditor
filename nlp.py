@@ -19,6 +19,7 @@ def clean_tag(tag):
 
 
 def tag_text(text):
+	text = text.replace("'", " ")
 	raw_tags = tt.tag(text)
 
 	clean_tags = []
